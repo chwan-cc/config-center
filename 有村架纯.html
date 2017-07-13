@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>有村架纯</title>
+		<!--<script src="js/vue.js"></script>
+		<link rel="stylesheet" href="css/bootstrap.css" />-->
+		<script src="https://cdn.bootcss.com/vue/2.3.4/vue.js"></script>
+		<link href="https://cdn.bootcss.com/bootstrap/4.0.0-alpha.6/css/bootstrap.css" rel="stylesheet">
+		<style>
+			.btngroup {
+				position: absolute;
+				bottom: 20px;
+				right: 20px;
+				width: 300px;
+				height: 34px;
+			}
+			body{
+				background-color: black;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="myapp" class="center-block">
+			<!--{{ srcid[1] }}-->
+
+			<div v-html="rawHtml+srcid[index]+two"></div>
+
+			<div class="btngroup ">
+				<button class="btn btn-primary " type="button " v-on:click="last" value="上一张 " >上一张</button>
+				<button class="btn btn-primary " type="button " v-on:click="next" value="下一张 " >下一张</button>
+
+			</div>
+		</div>
+
+		<script type="application/javascript ">
+			var app = new Vue({
+						el: '#myapp',
+						data: {
+							id: '254354656',
+							index: 1,
+							rawHtml: '<img src="https://img3.doubanio.com/view/photo/photo/public/p',
+							two: '.webp"/>',
+							srcid: ["2165829219", "2165211588", "991380314", "991379352", "991377833", "991365384", "991364581", "763118511", "2179356787", "2178253951", "2172318533", "2171815401", "2165211588"]
+						},
+						methods: {
+							last: function(event) {
+								this.index=(this.index+13+1)%13;
+							},
+							next: function(event) {
+								this.index=(this.index+13-1)%13;
+							}
+						}
+						})
+		</script>
+	</body>
+
+</html>
