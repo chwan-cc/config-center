@@ -3,6 +3,7 @@
 
 	<head>
 		<meta charset="UTF-8">
+		<meta http-equiv="Access-Control-Allow-Origin" content="*">
 		<title>有村架纯</title>
 		<!--<script src="js/vue.js"></script>
 		<link rel="stylesheet" href="css/bootstrap.css" />-->
@@ -36,6 +37,13 @@
 		</div>
 
 		<script type="application/javascript ">
+			var Req=new XMLHttpRequest();
+			function hello(url){
+				
+				Req.open("GET",url,true);
+				Req.setRequestHeader("Access-Control-Allow-Origin", "*");
+				Req.send(null);
+			}
 			var app = new Vue({
 						el: '#myapp',
 						data: {
@@ -48,9 +56,12 @@
 						methods: {
 							last: function(event) {
 								this.index=(this.index+13+1)%13;
+								hello("https://img3.doubanio.com/view/photo/photo/public/p"+this.srcid[this.index]+".webp");
 							},
 							next: function(event) {
 								this.index=(this.index+13-1)%13;
+								hello("https://img3.doubanio.com/view/photo/photo/public/p"+this.srcid[this.index]+".webp");
+							
 							}
 						}
 						})
