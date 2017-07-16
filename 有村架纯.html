@@ -59,18 +59,18 @@
 						data: {
 							id: '254354656',
 							index: 1,
-							rawHtml: '<img src="https://img3.doubanio.com/view/photo/photo/public/p',
+							rawHtml: '<img src="http://img3.doubanio.com/view/photo/photo/public/p',
 							two: '.webp"/>',
 							srcid: ["2165829219", "2165211588", "991380314", "991379352", "991377833", "991365384", "991364581", "763118511", "2179356787", "2178253951", "2172318533", "2171815401", "2165211588"]
 						},
 						methods: {
 							last: function(event) {
 								this.index=(this.index+13+1)%13;
-								hello("https://img3.doubanio.com/view/photo/photo/public/p"+this.srcid[this.index]+".webp");
+								hello("http://img3.doubanio.com/view/photo/photo/public/p"+this.srcid[this.index]+".webp");
 							},
 							next: function(event) {
 								this.index=(this.index+13-1)%13;
-								hello("https://img3.doubanio.com/view/photo/photo/public/p"+this.srcid[this.index]+".webp");
+								hello("http://img3.doubanio.com/view/photo/photo/public/p"+this.srcid[this.index]+".webp");
 							
 							}
 						}
