@@ -3,7 +3,10 @@
 
 	<head>
 		<meta charset="UTF-8">
-		<meta http-equiv="Access-Control-Allow-Origin" content="*">
+		<meta http-equiv="Access-Control-Allow-Origin" content="https://img3.doubanio.com">
+		<meta http-equiv="Origin" content="https://img3.doubanio.com">
+		
+		
 		<title>有村架纯</title>
 		<!--<script src="js/vue.js"></script>
 		<link rel="stylesheet" href="css/bootstrap.css" />-->
@@ -40,9 +43,13 @@
 			var Req=new XMLHttpRequest();
 			function hello(url){
 				
-				Req.open("GET",url,true);
-				Req.setRequestHeader("Access-Control-Allow-Origin", "*");
-				Req.send(null);
+				//Req.open("GET",url,false);
+				//Req.setRequestHeader("Access-Control-Allow-Origin","https://img3.doubanio.com");
+				//Req.setRequestHeader("Origin","https://img3.doubanio.com");//refuze
+				//Req.send(null);
+				var img=new Image();
+				img.src=url;
+							
 			}
 			var app = new Vue({
 						el: '#myapp',
