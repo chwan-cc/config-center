@@ -15,7 +15,7 @@
 			}
 			
 			body {
-				background-color: rgba(220,142,142,1);
+				background-color: rgba(220,142,220,1);
 			}
 		</style>
 		
@@ -24,14 +24,68 @@
 	<body>
 		<h1>有朋自远方来，不亦乐乎</h1>
 		<script type="text/javascript">
-			$(document).ready(function(){
-				var R=220,G=220,B=142;
-//				$("body").css("background-color","rgba("+R+","+G+","+B+",1)")
+		//通过拖拉调色板条，发现颜色变化有个特点，分为六个阶段
+		//A：220 B:142  	ABB ABA BBA BAA BAB AAB 
+		//可以看出只要按照这六个阶段变化，就可以实现背景颜色的渐变
+		//我们可以 从六个阶段抽象出六种行为 R- G- B- E+ G+ B+ :初始化好值ABA，就在循环中复现这六个阶段
+		/*for(var i=0;i<78*6;i++){
+			var flag=i/78;
+			if(i==0){
+				R--;
+			}
+			if(i==1){
+				G--;
+			}
+			if(i==2){
+				B--;
+			}
+			if(i==3){
+				R++;
+			}
+			if(i==4){
+				G++;
+			}
+			if(i==5){
+				B++;
+			}
+		}*/
+		var R=220,G=142,B=220;
+		
+		var i=0;
+		function changecolor(){
+			 
+					i++;
+					if(!(i<78*6))
+						i=0;
 				
-//				$("body").animate(background-color:"rgba("+R+","+G+","+B+",1)")
-			$("body").animate({backgroundcolor:"rgba(220,220,142,1)"})
-					
-					
+				var	flag=parseInt(i/78);
+					if(flag==0){
+						R--;
+					}
+					if(flag==1){
+						G--;
+					}
+					if(flag==2){
+						B--;
+					}
+					if(flag==3){
+						R++;
+					}
+					if(flag==4){
+						G++;
+					}
+					if(flag==5){
+						B++;
+					}
+				//console.log("R="+R+"  G="+G+"  B="+B);
+				$("body").css("background-color","rgba("+R+","+G+","+B+",1)");
+				
+		}
+		$(document).ready(function(){
+				var ref="";
+				ref = setInterval(function(){
+				changecolor();
+					},20);
 				
 			})
 			
