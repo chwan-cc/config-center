@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Canvas边框效果</title>
+
+		<style>
+			canvas {
+				position: absolute;
+				z-index: 100;
+			}
+			
+			div {
+				position: absolute;
+				height: 115px;
+				width: 335px;
+				margin: 5px;
+				background-color: #FFFFFF;
+				/*opacity: 0.5;*/
+				z-index: 101;
+				font-size: 5em;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<canvas height="125px" width="345px"></canvas>
+		<div>加入我们</div>
+		<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+		<script>
+			var ctx = $("canvas")[0].getContext("2d");
+			var step = 0;
+			var lidu = 100;
+
+			var buttonX = 345;
+			var buttonY = 125;
+
+			function draw() {
+				ctx.fillStyle = "#FF000F";
+				if(step == lidu) {
+					window.clearTimeout(timer1);
+				}
+
+				var lengthX = (step / lidu) * buttonX;
+				var lengthY = (step / lidu) * buttonY;
+
+				console.log(length);
+
+				ctx.beginPath();
+				ctx.moveTo(0, buttonY - lengthY);
+				ctx.lineTo(0, buttonY);
+				ctx.lineTo(lengthX, buttonY);
+				ctx.fill();
+
+				ctx.beginPath();
+
+				ctx.moveTo(buttonX - lengthX, 0);
+				ctx.lineTo(buttonX, 0);
+				ctx.lineTo(buttonX, lengthY);
+				ctx.fill();
+				step++;
+
+			}
+			var timer1;
+			$("div").mouseover(function() {
+
+				//cxt.fillRect(0,0,400,400); 
+				timer1 = setInterval(draw, 0.1 / lidu);
+			})
+			$("div").mouseout(function() {
+				step = 0;
+				ctx.fillStyle = "#FFFFFF";
+				ctx.fillRect(0, 0, 400, 400);
+				window.clearTimeout(timer1);
+			})
+		</script>
+
+	</body>
+
+</html>
